@@ -22,4 +22,15 @@ class Migration(migrations.Migration):
                 ('end', models.DateField()),
             ],
         ),
+        migrations.CreateModel(
+            name='User',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=168)),
+                ('isAdmin', models.BooleanField() ),
+                ('email', models.EmailField()),
+                ('balance', models.IntegerField()),
+                ('password', models.CharField(max_length=168)),
+            ]
+        )
     ]
