@@ -14,3 +14,13 @@ class WorkoutClass(models.Model):
 
     def _str_(self):
         return self.name
+
+class User(models.Model):
+    name = models.CharField(max_length=168)
+    isAdmin = models.BooleanField()
+    email = models.EmailField()
+    balance = models.IntegerField()
+    password = models.CharField(max_length=168)
+
+    def _str_(self):
+        return self.name
