@@ -25,13 +25,14 @@ router = routers.DefaultRouter()
 
 # Example
 router.register(r'classes', views.WorkoutClassView, 'class')
-
+router.register(r'classes', views.UserView, 'user')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('user/getUserInfo', views.getUserInfo),
     path('user/createUser', views.createUser),
-    path('user/updateUserInfo', views.updateUserInfo)
+    path('user/updateUserInfo', views.updateUserInfo),
+    path('workoutClass/getAllClasses', views.getWorkoutClasses)
 
 ]

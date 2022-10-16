@@ -1,18 +1,19 @@
+from fitgarageapp.models import WorkoutClass, CustomUser
+from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer
+from rest_framework import status
+from django.http.response import JsonResponse
+from rest_framework.parsers import JSONParser
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework.parsers import JSONParser
-from django.http.response import JsonResponse
-from rest_framework import status
-
 
 # Create your views here.
 
 
 # example view
 from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer
-from fitgarageapp.models import WorkoutClass, User
+from fitgarageapp.models import WorkoutClass, CustomUser
 
 
 class WorkoutClassView(viewsets.ModelViewSet):
@@ -22,7 +23,7 @@ class WorkoutClassView(viewsets.ModelViewSet):
 
 class UserView(viewsets.ModelViewSet):
     serialzer_class = UserSerializer
-    queryset = User.objects.all()
+    queryset = CustomUser.objects.all()
 
 
 @api_view(['POST'])
@@ -39,19 +40,26 @@ def createUser(request, *args, **kwargs):
 
 @api_view(['GET'])
 def getUserInfo(request):
-    user = User.objects.all()
+    user = CustomUser.objects.all()
     serializer = UserSerializer(user, many=True)
     return Response(serializer.data)
 
 
 @api_view(['PATCH'])
-def updateUserInfo(self, request, *args, **kwargs):
-    user_object = User.objects.get()
-    data = request.GET.get('data')
-    user_object.username = data.get("username", user_object.username)
+def updateUserInfo(request, *args, **kwargs):
+    user_object = CustomUser.objects.get()
+    data = request.data
+    user_object.name = data.get("name", user_object.name)
     user_object.email = data.get("email", user_object.email)
     user_object.isAdmin = data.get("is_admin", user_object.isAdmin)
 
     user_object.save()
     serializer = UserSerializer(user_object)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getWorkoutClasses(request):
+    workoutClass = WorkoutClass.objects.all()
+    serializer = WorkoutClassSerializer(workoutClass, many=True)
     return Response(serializer.data)

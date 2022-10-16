@@ -4,7 +4,7 @@ from django.contrib import admin
 
 
 # example, remove this once actual models have been implemented
-from fitgarageapp.models import WorkoutClass, User
+from fitgarageapp.models import WorkoutClass, CustomUser
 
 class WorkoutClassAdmin(admin.ModelAdmin):
     list_display = ('name', 'instructor', 'description', 'start', 'end')
@@ -15,4 +15,4 @@ class UserAdmin(admin.ModelAdmin):
 # registering the example model
 admin.site.register(WorkoutClass, WorkoutClassAdmin)
 
-admin.site.register(User, UserAdmin)
+admin.site.register(CustomUser, UserAdmin)
