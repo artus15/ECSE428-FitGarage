@@ -29,6 +29,7 @@ router.register(r'classes', views.UserView, 'user')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', include('fitgarageapp.urls')),
+    path('user/getUserInfo', views.getUserInfo),
+    path('workoutClass/getAllClasses', views.getWorkoutClasses),
     path('api/', include(router.urls))
 ]

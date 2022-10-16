@@ -9,7 +9,7 @@ from rest_framework.decorators import api_view
 
 # example view
 from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer
-from fitgarageapp.models import WorkoutClass, User
+from fitgarageapp.models import WorkoutClass, CustomUser
 
 
 class WorkoutClassView(viewsets.ModelViewSet):
@@ -18,10 +18,16 @@ class WorkoutClassView(viewsets.ModelViewSet):
 
 class UserView(viewsets.ModelViewSet):
     serialzer_class = UserSerializer
-    queryset = User.objects.all()
+    queryset = CustomUser.objects.all()
 
 @api_view(['GET'])
 def getUserInfo(request):
-    user = User.objects.all()
+    user = CustomUser.objects.all()
     serializer = UserSerializer(user, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getWorkoutClasses():
+    workoutClass = WorkoutClass.objects.all()
+    serializer = WorkoutClassSerializer(workoutClass, many=True)
     return Response(serializer.data)
