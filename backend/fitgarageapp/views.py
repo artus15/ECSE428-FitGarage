@@ -27,7 +27,7 @@ def getUserInfo(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
-def getWorkoutClasses():
+def getWorkoutClasses(request):
     workoutClass = WorkoutClass.objects.all()
     serializer = WorkoutClassSerializer(workoutClass, many=True)
     return Response(serializer.data)
