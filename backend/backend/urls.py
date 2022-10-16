@@ -31,8 +31,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('user/getUserInfo', views.getUserInfo),
-    path('user/createUser', views.createUser),
-    path('user/updateUserInfo', views.updateUserInfo),
-    path('workoutClass/getAllClasses', views.getWorkoutClasses)
-
+    path('user/getUserInfoById/<int:pk>/', views.getUserById),
+    path('user/getUserInfoByEmail/<str:email>/', views.getUserInfoByEmail),
+    path('workoutClass/getAllClasses', views.getWorkoutClasses),
+    path('api/', include(router.urls))
 ]

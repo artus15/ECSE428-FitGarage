@@ -63,3 +63,17 @@ def getWorkoutClasses(request):
     workoutClass = WorkoutClass.objects.all()
     serializer = WorkoutClassSerializer(workoutClass, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getUserById(request, pk):
+    user = CustomUser.objects.get(id=pk)
+    serializer = UserSerializer(user, many=False)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getUserInfoByEmail(request, email):
+    user = CustomUser.objects.get(email=email)
+    serializer = UserSerializer(user, many=False)
+    return Response(serializer.data)
+
