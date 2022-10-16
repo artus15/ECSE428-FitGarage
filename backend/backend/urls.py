@@ -30,4 +30,8 @@ router.register(r'classes', views.WorkoutClassView, 'class')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('user/getUserInfo', views.getUserInfo),
+    path('user/createUser', views.createUser),
+    path('user/updateUserInfo', views.updateUserInfo)
+
 ]
