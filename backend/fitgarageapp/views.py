@@ -64,6 +64,16 @@ def getWorkoutClasses(request):
     serializer = WorkoutClassSerializer(workoutClass, many=True)
     return Response(serializer.data)
 
+@api_view(['PATCH'])
+def updateUserPassword(request,*args, **kwargs):
+    user_object = CustomUser.objects.get()
+    data = request.data
+    user_object.password = data.get('password',user_object.password)
+
+    user_object.save()
+    serializer = UserSerializer(user_object)
+    return Response(serializer.data)
+
 
 @api_view(['GET'])
 def getUserById(request, pk):
