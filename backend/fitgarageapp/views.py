@@ -95,6 +95,3 @@ def createWorkoutClass(request, *args, **kwargs):
         serializer.save()
         return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-#@api_view(['PATCH'])
-#def enableWorkoutClass(request,*args, **kwargs)
