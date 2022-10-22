@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import dj_database_url
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -103,17 +104,38 @@ DATABASES = {
 }
 """
 
-# migrating to Heroku Postgres
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ddv6rbq4f4d5db',
-        'USER': 'twtjrcnkjxygcy',
-        'PASSWORD': '0e0b1e6cb0a42c883947f8387c16f8fb98f50f584b58be504e3b02e2efeaf218',
-        'HOST': 'ec2-44-209-24-62.compute-1.amazonaws.com',
-        'PORT': '5432',
+# to Heroku Postgres db
+
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'd7vt5mp7caqivu',
+            'USER': 'rhhexiomymwwqn',
+            'PASSWORD': '178ff3be565b2670c7f65f3775ade6951c57aa3f0d0d45825232aea5bb2a2c34',
+            'HOST': 'ec2-44-205-63-142.compute-1.amazonaws.com',
+            'PORT': '5432',
+            'TEST': {
+                'NAME': 'd7vt5mp7caqivu'
+            }
+        }
+    } 
+
+else:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'ddv6rbq4f4d5db',
+            'USER': 'twtjrcnkjxygcy',
+            'PASSWORD': '0e0b1e6cb0a42c883947f8387c16f8fb98f50f584b58be504e3b02e2efeaf218',
+            'HOST': 'ec2-44-209-24-62.compute-1.amazonaws.com',
+            'PORT': '5432',
+            'TEST': {
+                'NAME': 'ddv6rbq4f4d5db'
+            }
+        }
     }
-}
 
 # Connecting to Heroku db
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)

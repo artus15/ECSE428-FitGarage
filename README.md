@@ -106,17 +106,36 @@ We will reference a database and the user will be able to directly enter informa
 ### Prerequisites
 
   - have npm installed ([Download](https://nodejs.org/en/download/))
-  - have pip installed ([Follow this](https://phoenixnap.com/kb/install-pip-windows))
+  - have Python 3 installed ([Follow this](https://www.python.org/downloads/))
  
 ### Installation
 
-1. Create a venv, and activate it:
+1. Create a Python virtual environment:
+  ```sh
+  python3 -m venv /path/to/new/virtual/environment
+  ```
+2. Activate the new virtual environment:
+
+  On Linux/MacOS:
+  ```sh
+  source /path/to/new/virtual/environment/bin/activate
+  ``` 
+  On Windows:
+  ```sh
+  C:\> <venv>\Scripts\activate.bat
+  ```
+3. Install backend dependencies to the virtual environment:
   ```sh
   pip install -r backend/requirements.txt 
   ```
-2. Source the database:
+  > Note: Make sure that the name of the virtual environment is in the ```.gitignore``` to avoid pushing package binaries to the repository. Common names such as .env, .venv, env, venv are already included by default.
+4. Source the database URL:
  ```sh
  source backend/image.env 
+ ```
+ > If you are running tests, source the testing databse URL instead:
+ ```sh
+ source backend/test_image.env
  ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -150,6 +169,20 @@ You need to do the following in 2 different terminals to allow the react app to 
   ```sh
   npm start
   ```
+
+## Running Django tests
+
+ ```sh
+ cd backend
+ ```
+
+ ```sh
+ source test_image.env
+ ```
+
+ ```sh
+ python manage.py test <TestCaseName> --keepdb
+ ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
