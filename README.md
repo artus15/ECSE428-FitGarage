@@ -133,7 +133,7 @@ We will reference a database and the user will be able to directly enter informa
  ```sh
  source backend/image.env 
  ```
- > If you are running tests, source the testing databse URL instead:
+ > If you are running tests, source the testing database URL instead:
  ```sh
  source backend/test_image.env
  ```
