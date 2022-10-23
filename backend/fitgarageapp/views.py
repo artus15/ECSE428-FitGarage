@@ -1,3 +1,4 @@
+from datetime import datetime
 from fitgarageapp.models import WorkoutClass, CustomUser
 from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer
 from rest_framework import status
@@ -87,3 +88,15 @@ def getUserInfoByEmail(request, email):
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
 
+@api_view(['DELETE'])
+def deleteWorkoutClass(request, pk):
+    workoutClass = WorkoutClass.objects.get(id=pk)
+
+    # now = datetime.now()
+    # if workoutClass.enable:
+    #   return Response("Wokrout class is enabled, cannot delete")  
+    # elif(workoutClass.start > now and workoutClass.end < now):
+    #     return Response("Workout class is in Progress cannot delete")
+
+    workoutClass.delete()
+    return Response('Workout Class Deleted')
