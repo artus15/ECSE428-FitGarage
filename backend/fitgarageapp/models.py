@@ -27,3 +27,13 @@ class CustomUser(models.Model):
 
     def _str_(self):
         return self.name
+
+class CustomReview(models.Model):
+    grade = models.IntegerField()
+    comment = models.TextField()
+
+    def get_grade(self):
+        return self.grade
+
+    def get_comment(self):
+        return self.grade
