@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from fitgarageapp.models import WorkoutClass, CustomUser
 from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer
 from rest_framework import status
@@ -94,7 +94,7 @@ def getUserInfoByEmail(request, email):
 def deleteWorkoutClass(request, pk):
     workoutClass = WorkoutClass.objects.get(id=pk)
 
-    now = datetime.now()
+    now = date.today()
     if workoutClass.enable:
       return Response("Wokrout class is enabled, cannot delete")  
     elif(workoutClass.start > now and workoutClass.end < now):
