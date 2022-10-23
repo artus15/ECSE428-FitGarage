@@ -6,7 +6,7 @@ from fitgarageapp.models import WorkoutClass, CustomUser
 class WorkoutClassSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkoutClass
-        fields = ('id', 'name', 'instructor', 'description', 'start', 'end')
+        fields = ('id', 'name', 'instructor', 'description', 'start', 'end', 'enable')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
