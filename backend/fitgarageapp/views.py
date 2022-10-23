@@ -94,14 +94,15 @@ def getUserInfoByEmail(request, email):
 def deleteWorkoutClass(request, pk):
     workoutClass = WorkoutClass.objects.get(id=pk)
 
-    # now = datetime.now()
-    # if workoutClass.enable:
-    #   return Response("Wokrout class is enabled, cannot delete")  
-    # elif(workoutClass.start > now and workoutClass.end < now):
-    #     return Response("Workout class is in Progress cannot delete")
+    now = datetime.now()
+    if workoutClass.enable:
+      return Response("Wokrout class is enabled, cannot delete")  
+    elif(workoutClass.start > now and workoutClass.end < now):
+        return Response("Workout class is in progress, cannot delete")
 
     workoutClass.delete()
     return Response('Workout Class Deleted')
+
 @api_view(['POST'])
 def createWorkoutClass(request, *args, **kwargs):
     workoutClass_object = JSONParser().parse(request)
