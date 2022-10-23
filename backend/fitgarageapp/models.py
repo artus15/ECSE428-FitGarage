@@ -11,7 +11,7 @@ class WorkoutClass(models.Model):
     description = models.TextField()
     start = models.DateField()
     end = models.DateField()
-
+    enable = models.BooleanField()
     def _str_(self):
         return self.name
 

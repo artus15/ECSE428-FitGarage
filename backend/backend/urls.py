@@ -35,6 +35,7 @@ urlpatterns = [
     path('user/getUserInfoById/<int:pk>/', views.getUserById),
     path('user/getUserInfoByEmail/<str:email>/', views.getUserInfoByEmail),
     path('workoutClass/getAllClasses', views.getWorkoutClasses),
+    path('workoutClass/createWorkoutClass', views.createWorkoutClass),
     path('workoutClass/getWorkoutByName/<str:name>/', views.getWorkoutByName),
     path('workoutClass/getWorkoutById/<int:pk>/', views.getWorkoutById),
     path('workoutClass/getWorkoutByInstructor/<str:instructor>/',

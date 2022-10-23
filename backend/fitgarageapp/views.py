@@ -89,6 +89,14 @@ def getUserInfoByEmail(request, email):
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
 
+@api_view(['POST'])
+def createWorkoutClass(request, *args, **kwargs):
+    workoutClass_object = JSONParser().parse(request)
+    serializer = WorkoutClassSerializer(data=workoutClass_object)
+    if serializer.is_valid():
+        serializer.save()
+        return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+    return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def getWorkoutByName(request, name):
@@ -109,3 +117,4 @@ def getWorkoutByInstructor(request, instructor):
     workout = WorkoutClass.objects.get(instructor=instructor)
     serializer = WorkoutClassSerializer(workout, many=False)
     return Response(serializer.data)
+
