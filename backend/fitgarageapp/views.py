@@ -137,3 +137,9 @@ def updateReview(request, *args, **kwargs):
     review_object.save()
     serializer = ReviewSerializer(review_object)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def getReviewById(request, pk):
+    review = CustomReview.objects.get(id=pk)
+    serializer = ReviewSerializer(review, many=False)
+    return Response(serializer.data)
