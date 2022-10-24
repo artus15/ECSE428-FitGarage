@@ -29,6 +29,8 @@ class CustomUser(models.Model):
         return self.name
 
 class CustomReview(models.Model):
+    userId = models.IntegerField()
+    workoutClassId = models.IntegerField()
     grade = models.IntegerField()
     comment = models.TextField()
 
@@ -36,4 +38,10 @@ class CustomReview(models.Model):
         return self.grade
 
     def get_comment(self):
-        return self.grade
+        return self.comment
+
+    def get_userId(self):
+        return self.userId
+
+    def get_workoutClassId(self):
+        return self.workoutClassId
