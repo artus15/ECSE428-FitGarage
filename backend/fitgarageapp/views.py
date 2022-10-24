@@ -90,14 +90,16 @@ def getUserInfoByEmail(request, email):
     return Response(serializer.data)
 
 @api_view(['PATCH'])
-def updateUserBalance(balance, request,*args, **kwargs):
-    user_object = CustomUser.objects.get()
-    # balance_request = request.data.get('balance', user_object.balance)
+def updateUserBalance(balance, self):
+    user_object = CustomUser.objects.get(id=self._request.user.id)
     if balance >= 0:
         user_object.balance += balance
-        user_object.save()
-        serializer = UserSerializer(user_object)
-        return Response(serializer.data)
+        # user_object.save()
+        serializer = UserSerializer(user_object, data=self._request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
     return JsonResponse('Balance needs to be superior to 0$', status=status.HTTP_400_BAD_REQUEST)
     
 @api_view(['POST'])
