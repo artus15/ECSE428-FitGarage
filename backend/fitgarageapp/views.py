@@ -92,11 +92,11 @@ def getUserInfoByEmail(request, email):
 
 @api_view(['PATCH'])
 def updateUserBalance(balance, self):
-    user_object = CustomUser.objects.get(id=self._request.user.id)
+    user_object = CustomUser.objects.get(id=self.request._request.user.id)
     if balance >= 0:
         user_object.balance += balance
         # user_object.save()
-        serializer = UserSerializer(user_object, data=self._request.data, partial=True)
+        serializer = UserSerializer(user_object, data=self.request._request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

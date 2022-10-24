@@ -1,5 +1,5 @@
 from django.test import TestCase
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse as response
 from fitgarageapp.models import WorkoutClass, CustomUser
 from fitgarageapp.views import updateUserBalance
 
@@ -21,7 +21,7 @@ class CustomUserTest(TestCase):
         user = CustomUser.objects.get(name="Tom Brady")
         balance = -40
         updateUserBalance(balance, self)
-        self.assertEqual(JsonResponse.data, 'Balance needs to be superior to 0$')
+        self.assertEqual(response.data, 'Balance needs to be superior to 0$')
 
 # class  WorkoutClassViewTest(TestCase):
 #     def setUp(self):
