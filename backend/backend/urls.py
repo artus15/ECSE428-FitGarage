@@ -40,6 +40,5 @@ urlpatterns = [
     path('workoutClass/updateWorkoutClass', views.updateWorkoutClass),
     path('workoutClass/getWorkoutByName/<str:name>/', views.getWorkoutByName),
     path('workoutClass/getWorkoutById/<int:pk>/', views.getWorkoutById),
-    path('workoutClass/getWorkoutByInstructor/<str:instructor>/',
-         views.getWorkoutByInstructor)
+    path('workoutClass/getWorkoutByInstructor/<str:instructor>/', views.getWorkoutByInstructor)
 ]
