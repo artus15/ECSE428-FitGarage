@@ -53,5 +53,31 @@ class WorkoutClassTestCase(TestCase):
         response = self.c.get(self.base_url + "getAllClasses")
         self.assertEqual(response.status_code, 200)
 
+    def test_update_workout_instructor(self):
+        zumbaclass = WorkoutClass.objects.get(name="Zumba")
+        zumbaclass.updateWorkoutClass(instructor="Pamela Poppy")
 
-        
+        self.assertEquals(zumbaclass.get_instructor(), "Pamela Poppy")
+
+    def test_update_workout_description(self):
+        kickboxingclass = WorkoutClass.objects.get(name="Kickboxing")
+        kickboxingclass.updateWorkoutClass(description="Come kickbox with Charlie")
+
+        self.assertEquals(kickboxingclass.get_description(), "Come kickbox with Charlie")
+
+    def test_update_workout_start(self):
+        zumbaclass = WorkoutClass.objects.get(name="Zumba")
+        zumbaclass.updateWorkoutClass(start=datetime.date(2022, 11, 1))
+        self.assertEquals(zumbaclass.get_start(),datetime.date(2022, 11, 1))
+
+    def test_update_workout_end(self):
+        zumbaclass = WorkoutClass.objects.get(name="Zumba")
+        zumbaclass.updateWorkoutClass(end=datetime.date(2022, 11, 1))
+        self.assertEquals(zumbaclass.get_end(),datetime.date(2022, 11, 1))
+
+    def test_update_enable(self):
+        kickboxingclass = WorkoutClass.objects.get(name="Kickboxing")
+        kickboxingclass.updateWorkoutClass(enable=True)
+
+        self.assertEquals(kickboxingclass.get_enable(), True)
+
