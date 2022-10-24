@@ -14,23 +14,25 @@ class WorkoutClassTestCase(TestCase):
 
         WorkoutClass.objects.create(
 
-            name="Zumba",
-            instructor="Charlie Chaplin",
-            description="Come dance with Charlie!",
-            start=datetime.date(2022, 10, 31),
-            end=datetime.date(2023, 3, 19),
-            enable=True
+            name = "Zumba",
+            instructor = "Charlie Chaplin",
+            description = "Come dance with Charlie!",
+            start = datetime.date(2022, 10, 31),
+            end = datetime.date(2023, 3, 19),
+            enable = True,
+       
 
         )
 
         WorkoutClass.objects.create(
 
-            name="Kickboxing",
-            instructor="Charlie Chaplin",
-            description="Come train with Charlie!",
-            start=datetime.date(2022, 10, 31),
-            end=datetime.date(2023, 3, 19),
-            enable=False
+            name = "Kickboxing",
+            instructor = "Charlie Chaplin",
+            description = "Come train with Charlie!",
+            start = datetime.date(2022, 10, 31),
+            end = datetime.date(2023, 3, 19),
+            enable = False
+            
 
         )
 
@@ -40,6 +42,21 @@ class WorkoutClassTestCase(TestCase):
 
         self.assertEqual(zumbaclass.get_instructor(), "Charlie Chaplin")
         self.assertEqual(kickboxingclass.get_instructor(), "Charlie Chaplin")
+
+    def test_create_workout_class(self):
+        
+        WorkoutClass.objects.create(
+
+            name = "Swimming",
+            instructor = "Charlie Chaplin",
+            description = "Come train with Charlie!",
+            start = datetime.date(2022, 10, 31),
+            end = datetime.date(2023, 3, 19),
+            enable = False
+
+        )
+
+        self.assertEqual(WorkoutClass.objects.count(), 3)
 
     def test_delete_workout_class(self):
         zumbaclass = WorkoutClass.objects.get(name="Zumba")
