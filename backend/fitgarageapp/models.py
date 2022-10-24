@@ -15,6 +15,9 @@ class WorkoutClass(models.Model):
     def _str_(self):
         return self.name
 
+    def get_instructor(self):
+        return self.instructor
+
 class CustomUser(models.Model):
     name = models.CharField(max_length=168)
     isAdmin = models.BooleanField()
