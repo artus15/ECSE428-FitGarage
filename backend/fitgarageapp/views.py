@@ -64,11 +64,12 @@ def getWorkoutClasses(request):
     serializer = WorkoutClassSerializer(workoutClass, many=True)
     return Response(serializer.data)
 
+
 @api_view(['PATCH'])
-def updateUserPassword(request,*args, **kwargs):
+def updateUserPassword(request, *args, **kwargs):
     user_object = CustomUser.objects.get()
     data = request.data
-    user_object.password = data.get('password',user_object.password)
+    user_object.password = data.get('password', user_object.password)
 
     user_object.save()
     serializer = UserSerializer(user_object)
@@ -80,6 +81,7 @@ def getUserById(request, pk):
     user = CustomUser.objects.get(id=pk)
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
+
 
 @api_view(['GET'])
 def getUserInfoByEmail(request, email):
@@ -97,3 +99,33 @@ def updateUserBalance(balance, request,*args, **kwargs):
         serializer = UserSerializer(user_object)
         return Response(serializer.data)
     return JsonResponse('Balance needs to be superior to 0$', status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['POST'])
+def createWorkoutClass(request, *args, **kwargs):
+    workoutClass_object = JSONParser().parse(request)
+    serializer = WorkoutClassSerializer(data=workoutClass_object)
+    if serializer.is_valid():
+        serializer.save()
+        return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+    return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def getWorkoutByName(request, name):
+    workout = WorkoutClass.objects.get(name=name)
+    serializer = WorkoutClassSerializer(workout, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getWorkoutById(request, pk):
+    workout = WorkoutClass.objects.get(id=pk)
+    serializer = WorkoutClassSerializer(workout, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getWorkoutByInstructor(request, instructor):
+    workout = WorkoutClass.objects.get(instructor=instructor)
+    serializer = WorkoutClassSerializer(workout, many=False)
+    return Response(serializer.data)
+
