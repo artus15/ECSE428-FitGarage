@@ -1,3 +1,4 @@
+from datetime import date, datetime
 from fitgarageapp.models import WorkoutClass, CustomUser
 from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer
 from rest_framework import status
@@ -102,6 +103,19 @@ def updateUserBalance(balance, self):
         return Response(status=status.HTTP_400_BAD_REQUEST)
     return JsonResponse('Balance needs to be superior to 0$', status=status.HTTP_400_BAD_REQUEST)
     
+@api_view(['DELETE'])
+def deleteWorkoutClass(request, pk):
+    workoutClass = WorkoutClass.objects.get(id=pk)
+
+    now = date.today()
+    if workoutClass.enable:
+      return Response("Wokrout class is enabled, cannot delete")  
+    elif(workoutClass.start > now and workoutClass.end < now):
+        return Response("Workout class is in progress, cannot delete")
+
+    workoutClass.delete()
+    return Response('Workout Class Deleted')
+
 @api_view(['POST'])
 def createWorkoutClass(request, *args, **kwargs):
     workoutClass_object = JSONParser().parse(request)
