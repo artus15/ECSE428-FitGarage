@@ -36,5 +36,6 @@ urlpatterns = [
     path('user/getUserInfoByEmail/<str:email>/', views.getUserInfoByEmail),
     path('workoutClass/getAllClasses', views.getWorkoutClasses),
     path('workoutClass/createWorkoutClass', views.createWorkoutClass),
+    path('workoutClass/updateWorkoutClass', views.updateWorkoutClass),
     path('api/', include(router.urls))
 ]

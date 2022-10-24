@@ -95,3 +95,17 @@ def createWorkoutClass(request, *args, **kwargs):
         serializer.save()
         return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PATCH'])
+def updateWorkoutClass(request,*args, **kwargs):
+    workout_object = WorkoutClass.objects.get()
+    data = request.data
+    workout_object.name = data.get("name", workout_object.name)
+    workout_object.instructor = data.get("instructor", workout_object.instructor)
+    workout_object.description = data.get("description", workout_object.description)
+    workout_object.start = data.get("start", workout_object.start)
+    workout_object.end = data.get("end", workout_object.end)
+    workout_object.enable = data.get("enable", workout_object.enable)
+    workout_object.save()
+    serializer = WorkoutClassSerializer(workout_object)
+    return Response(serializer.data)
