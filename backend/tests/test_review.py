@@ -1,30 +1,55 @@
-from xml.etree.ElementTree import Comment
+
+from urllib import response
 from django.test import TestCase
 from fitgarageapp.models import CustomReview
+import json
 
 import datetime
 
 class ReviewTestCase(TestCase):
     def setUp(self) -> None:
         CustomReview.objects.create(
-
-            userid = 655,
-            workoutclassid = 876,
+            username = "John Smith",
+            classname = "Kickboxing",
+            # userid = 655,
+            # workoutclassid = 876,
             grade = 5,
             comment = "The class was beginner friendly, I recommend it."
-
         )
 
+        # self.customReview = CustomReview(
+        #     username = "John Smith",
+        #     classname = "Kickboxing",
+        #     # userid = 655,
+        #     # workoutclassid = 876,
+        #     grade = 5,
+        #     comment = "The class was beginner friendly, I recommend it."
+        # )
+
         CustomReview.objects.create(
-            userid = 655,
-            workoutclassid = 566,
+            # userid = 655,
+            # workoutclassid = 566,
+            username = "Alexandra Gafencu",
+            classname = "Yoga",
             grade = 3,
             comment = "The instructor was a bit rude at times but the class was okay."
 
         )
 
-    def test_review_grade(self):
+    # def test_project_review_GET(self):
+    #     review = CustomReview()
+    #     response = review.get_grade('3')
 
+    def test_get_review_by_user(self):
+        review = CustomReview.objects.get(username="Alexandra Gafencu")
+
+        # self.assertEquals(response.status_code,200)
+        self.assertEqual(review.get_workoutClassName(), "Yoga")
+        self.assertEqual(review.get_grade(), 3)
+        self.assertEqual(review.get_comment(), "The instructor was a bit rude at times but the class was okay.")
+
+
+    def test_review_grade(self):
         goodreview_grade = CustomReview.objects.get(comment="The class was beginner friendly, I recommend it.")
         okayreview_grade = CustomReview.objects.get(Comment="The instructor was a bit rude at times but the class was okay.")
 
@@ -40,20 +65,15 @@ class ReviewTestCase(TestCase):
 
     def test_get_review_author(self):
         goodreview_grade = CustomReview.objects.get(comment="The class was beginner friendly, I recommend it.")
-        self.assertEqual(goodreview_grade.get_userId(), 655)
+        self.assertEqual(goodreview_grade.get_userName(), "John Smith")
 
     def test_get_review_workout_class(self):
         goodreview_grade = CustomReview.objects.get(comment="The instructor was a bit rude at times but the class was okay.")
-        self.assertEqual(goodreview_grade.get_workoutClassId, 566)
+        self.assertEqual(goodreview_grade.get_workoutClassName, "Yoga")
 
-    def updateReview(self)->None:
-        CustomReview.objects.update(
-            grade = 4,
-            comment = "The class was beginner friendly."
-        )
-
-    def test_review_change(self):
-        #incomplete
-        goodreview_grade = CustomReview.objects.get(grade=5)
+    def test_update_review(self):
+        review = CustomReview.objects.get(username="Alexandra Gafencu")
+        review.updateReview(grade=1)
+        self.assertEqual(review.get_workoutClassName(), 1)
 
         

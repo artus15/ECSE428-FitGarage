@@ -17,4 +17,5 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomReview
         # fields = ('id', 'grade', 'comment')
-        fields = ('id', 'userid', 'workoutclassid', 'grade', 'comment')
+        # fields = ('id', 'userid', 'workoutclassid', 'grade', 'comment')
+        fields = ('id', 'username', 'classname', 'grade', 'comment')
