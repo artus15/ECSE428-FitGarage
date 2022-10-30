@@ -1,10 +1,11 @@
 
+from email.policy import HTTP
 from urllib import response
 from django.test import TestCase
 from fitgarageapp.models import CustomReview
 import json
 from fitgarageapp.views import updateReview
-
+import http
 import datetime
 
 class ReviewTestCase(TestCase):
@@ -72,7 +73,25 @@ class ReviewTestCase(TestCase):
         goodreview = CustomReview.objects.get(comment="The instructor was a bit rude at times but the class was okay.")
         self.assertEqual(goodreview.get_workoutClassName(), "Yoga")
 
+    def test_create_review(self):
+        CustomReview.objects.create(
+            username = "George Smith",
+            classname = "Kickboxing",
+            grade = 5,
+            comment = "Good!"
+        )
+
+        CustomReview.objects.create(
+            username = "George Lead",
+            classname = "Boxing",
+            grade = 4,
+            comment = "GREAT!"
+        )
+
+        self.assertEqual(CustomReview.objects.count(),4)
+
     # def test_update_review(self):
     #     review = CustomReview.objects.get(username="Alexandra Gafencu")
-    #     updateReview(review,grade=1)
+    #     # must have a request here not review django.http.HttpRequest
+    #     updateReview(self,review,grade=1)
     #     self.assertEqual(review.get_grade(), 1)
