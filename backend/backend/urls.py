@@ -38,8 +38,8 @@ urlpatterns = [
     path('workoutClass/getAllClasses', views.getWorkoutClasses),
     path('workoutClass/delete/<int:pk>', views.deleteWorkoutClass),
     path('workoutClass/createWorkoutClass', views.createWorkoutClass),
+    path('workoutClass/updateWorkoutClass', views.updateWorkoutClass),
     path('workoutClass/getWorkoutByName/<str:name>/', views.getWorkoutByName),
     path('workoutClass/getWorkoutById/<int:pk>/', views.getWorkoutById),
-    path('workoutClass/getWorkoutByInstructor/<str:instructor>/',
-         views.getWorkoutByInstructor)
+    path('workoutClass/getWorkoutByInstructor/<str:instructor>/', views.getWorkoutByInstructor)
 ]
