@@ -16,3 +16,10 @@ Get user by id
     Create Session  Get_user_by_id   ${URL}
     ${response}=  get on session  Get_user_by_id  user/getUserInfoById/1
     Log to console  ${response.json()}
+
+Create new user
+    [Documentation]    Create new user
+    Create Session    Create_new_user   ${URL}
+    ${data}   Create Dictionary    name=yasmina   email=yas@gmail.com   isAdmin=false   balance=0   password=12345
+    ${response}=   post on session   Create_new_user  user/createUser   json=${data}
+    Log to console  ${response.json()}
