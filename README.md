@@ -189,7 +189,7 @@ You need to do the following in 2 different terminals to allow the react app to 
 cd backend
 ```
 ```sh
-python -m robot "your file name.robot"
+robot /path/to/robot/file.robot
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
