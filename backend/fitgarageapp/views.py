@@ -1,6 +1,8 @@
+
+from fitgarageapp.models import WorkoutClass, CustomUser, CustomReview
+from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer, ReviewSerializer
+
 from datetime import date, datetime
-from fitgarageapp.models import WorkoutClass, CustomUser
-from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer
 from rest_framework import status
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
@@ -47,8 +49,8 @@ def getUserInfo(request):
 
 
 @api_view(['PATCH'])
-def updateUserInfo(request, *args, **kwargs):
-    user_object = CustomUser.objects.get()
+def updateUserInfo(request, pk, *args, **kwargs):
+    user_object = CustomUser.objects.get(id=pk)
     data = request.data
     user_object.name = data.get("name", user_object.name)
     user_object.email = data.get("email", user_object.email)
@@ -146,10 +148,9 @@ def getWorkoutByInstructor(request, instructor):
     return Response(serializer.data)
 
 
-
 @api_view(['PATCH'])
-def updateWorkoutClass(request,*args, **kwargs):
-    workout_object = WorkoutClass.objects.get()
+def updateWorkoutClass(request, pk, *args, **kwargs):
+    workout_object = WorkoutClass.objects.get(id=pk)
     data = request.data
     workout_object.name = data.get("name", workout_object.name)
     workout_object.instructor = data.get("instructor", workout_object.instructor)
@@ -159,4 +160,3 @@ def updateWorkoutClass(request,*args, **kwargs):
     workout_object.enable = data.get("enable", workout_object.enable)
     workout_object.save()
     serializer = WorkoutClassSerializer(workout_object)
-    return Response(serializer.data)

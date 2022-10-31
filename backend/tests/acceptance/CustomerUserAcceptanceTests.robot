@@ -19,4 +19,11 @@ Get user by id with valid id
     Log To Console    ${response.json()}
     Should Be Equal As Strings    ${response.json()}[name]    Yasmina
     Should Be Equal As Strings    ${response.json()}[email]    yasmina1@gmail.com
-    
+
+Change user attribute
+    [Documentation]    Change user attribute
+    Create Session  Change_user_attribute   ${URL}
+    &{data}=    Create Dictionary     name=test
+    ${response}=  patch on session  Change_user_attribute  user/updateUserInfo/1/  json=${data}
+    Log to console  ${response.json()}
+

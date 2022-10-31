@@ -27,3 +27,34 @@ class CustomUser(models.Model):
 
     def _str_(self):
         return self.name
+
+class CustomReview(models.Model):
+
+    username = models.CharField(max_length=168)
+    classname = models.CharField(max_length=168)
+    grade = models.IntegerField()
+    comment = models.TextField()
+
+    # userId = models.IntegerField()
+    # workoutClassId = models.IntegerField()
+
+    def get_grade(self):
+        return self.grade
+
+    def get_comment(self):
+        return self.comment
+
+    def get_userName(self):
+        return self.username
+
+    def get_workoutClassName(self):
+        return self.classname
+        
+    # def get_userId(self):
+    #     return self.userId
+
+    # def get_workoutClassId(self):
+    #     return self.workoutClassId
+
+
+

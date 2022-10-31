@@ -183,6 +183,14 @@ You need to do the following in 2 different terminals to allow the react app to 
  ```sh
  python manage.py test <TestCaseName> --keepdb
  ```
+ 
+## Running Robot framework
+```sh
+cd backend
+```
+```sh
+python -m robot "your file name.robot"
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
