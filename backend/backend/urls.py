@@ -32,6 +32,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('user/createUser', views.createUser),
     path('user/getUserInfo', views.getUserInfo),
+    path('user/updatePassword/<int:pk>/', views.updateUserPassword),
     path('user/createUser', views.createUser),
     path('user/updateUserInfo/<int:pk>/', views.updateUserInfo),
     path('user/updatePassword', views.updateUserPassword),
