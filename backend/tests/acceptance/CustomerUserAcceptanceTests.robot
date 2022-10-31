@@ -20,6 +20,6 @@ Get user by id
 Change user attribute
     [Documentation]    Change user attribute
     Create Session  Change_user_attribute   ${URL}
-    &{data}=    Create Dictionary     name="artus" email="test@gmail.com" is_admin=true 
-    ${response}=  patch on session  Get_user_by_id  user/updateUserInfo/1/  json=${data}
+    &{data}=    Create Dictionary     name=test
+    ${response}=  patch on session  Change_user_attribute  user/updateUserInfo/1/  json=${data}
     Log to console  ${response.json()}
