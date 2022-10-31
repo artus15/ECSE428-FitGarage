@@ -159,24 +159,8 @@ def createReview(request, *args, **kwargs):
     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PATCH'])
-def updateReview(request, *args, **kwargs):
-    review_object = CustomReview.objects.get()
-    data = request.data
-    review_object.grade = data.get('grade', review_object.grade)
-    review_object.comment = data.get('comment', review_object.comment)
-    review_object.save()
-    serializer = ReviewSerializer(review_object)
-    return Response(serializer.data)
-
-@api_view(['GET'])
-def getReviewById(request, pk):
-    review = CustomReview.objects.get(id=pk)
-    serializer = ReviewSerializer(review, many=False)
-    return Response(serializer.data)
-
-@api_view(['PATCH'])
-def updateWorkoutClass(request,*args, **kwargs):
-    workout_object = WorkoutClass.objects.get()
+def updateWorkoutClass(request, pk, *args, **kwargs):
+    workout_object = WorkoutClass.objects.get(id=pk)
     data = request.data
     workout_object.name = data.get("name", workout_object.name)
     workout_object.instructor = data.get("instructor", workout_object.instructor)
