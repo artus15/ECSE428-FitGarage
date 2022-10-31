@@ -22,11 +22,14 @@ class CustomUser(models.Model):
     name = models.CharField(max_length=168)
     isAdmin = models.BooleanField()
     email = models.EmailField()
-    balance = models.IntegerField()
+    balance = models.IntegerField(choices=[(i, i) for i in range(1, 1000)], blank=False)
     password = models.CharField(max_length=168)
 
     def _str_(self):
         return self.name
+
+    def get_balance(self):
+        return self.balance
 
 class CustomReview(models.Model):
 
