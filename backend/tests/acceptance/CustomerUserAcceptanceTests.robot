@@ -20,10 +20,16 @@ Get user by id with valid id
     Should Be Equal As Strings    ${response.json()}[name]    Yasmina
     Should Be Equal As Strings    ${response.json()}[email]    yasmina1@gmail.com
 
+Update user password
+    [Documentation]     Update user password
+    Create Session  Update_user_password   ${URL}
+    &{data}=    Create Dictionary     password="New-sPassword!!!!!"
+    ${response}=   patch on session   Update_user_password    user/updatePassword/1/   json=${data}
+    Log to console   User info with updated password: ${response.json()}
+    
 Change user attribute
     [Documentation]    Change user attribute
     Create Session  Change_user_attribute   ${URL}
     &{data}=    Create Dictionary     name=test
     ${response}=  patch on session  Change_user_attribute  user/updateUserInfo/1/  json=${data}
     Log to console  ${response.json()}
-
