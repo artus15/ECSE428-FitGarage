@@ -16,3 +16,10 @@ Get user by id
     Create Session  Get_user_by_id   ${URL}
     ${response}=  get on session  Get_user_by_id  user/getUserInfoById/1
     Log to console  ${response.json()}
+
+Change user attribute
+    [Documentation]    Change user attribute
+    Create Session  Change_user_attribute   ${URL}
+    &{data}=    Create Dictionary     name="artus" email="test@gmail.com" is_admin=true 
+    ${response}=  patch on session  Get_user_by_id  user/updateUserInfo/1/  json=${data}
+    Log to console  ${response.json()}
