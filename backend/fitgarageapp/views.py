@@ -148,16 +148,6 @@ def getWorkoutByInstructor(request, instructor):
     return Response(serializer.data)
 
 
-@api_view(['POST'])
-def createReview(request, *args, **kwargs):
-    review_object = JSONParser().parse(request)
-    serializer = ReviewSerializer(data=review_object)
-    print(review_object)
-    if serializer.is_valid():
-        serializer.save()
-        return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
-    return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 @api_view(['PATCH'])
 def updateWorkoutClass(request, pk, *args, **kwargs):
     workout_object = WorkoutClass.objects.get(id=pk)
