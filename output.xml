@@ -1,97 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0 (Python 3.10.8 on win32)" generated="20221030 20:00:21.442" rpa="false" schemaversion="3">
-<suite id="s1" name="Backend" source="c:\Users\cesar\Desktop\Mcgill\Computer\ECSE 428\Project\ECSE428-FitGarage\backend">
-<suite id="s1-s1" name="Tests" source="c:\Users\cesar\Desktop\Mcgill\Computer\ECSE 428\Project\ECSE428-FitGarage\backend\tests">
-<suite id="s1-s1-s1" name="Acceptance" source="c:\Users\cesar\Desktop\Mcgill\Computer\ECSE 428\Project\ECSE428-FitGarage\backend\tests\acceptance">
-<suite id="s1-s1-s1-s1" name="CustmerUserAcceptanceTests" source="c:\Users\cesar\Desktop\Mcgill\Computer\ECSE 428\Project\ECSE428-FitGarage\backend\tests\acceptance\CustmerUserAcceptanceTests.robot">
-<test id="s1-s1-s1-s1-t1" name="Get all user information" line="10">
+<robot generator="Robot 6.0 (Python 3.10.7 on darwin)" generated="20221030 22:06:59.711" rpa="false" schemaversion="3">
+<suite id="s1" name="WorkoutClassAcceptanceTests" source="/Users/ruidu/Documents/McGill/F2022/ECSE 428/ECSE428-FitGarage/backend/tests/acceptance/WorkoutClassAcceptanceTests.robot">
+<test id="s1-t1" name="Admin adds workout class" line="9">
 <kw name="Create Session" library="RequestsLibrary">
-<arg>Get_all_user_information</arg>
+<arg>Create_workout_class</arg>
 <arg>${URL}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221030 20:00:21.649" level="INFO">Creating Session using : alias=Get_all_user_information, url=http://127.0.0.1:8000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221030 20:00:21.649" endtime="20221030 20:00:21.652"/>
+<msg timestamp="20221030 22:06:59.744" level="INFO">Creating Session using : alias=Create_workout_class, url=http://127.0.0.1:8000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221030 22:06:59.743" endtime="20221030 22:06:59.744"/>
 </kw>
-<kw name="GET On Session" library="RequestsLibrary">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{data}</var>
+<arg>name="Running Class"</arg>
+<arg>instructor=Charlie Chaplin</arg>
+<arg>description=Come run with Charlie!</arg>
+<arg>start=2022-11-11</arg>
+<arg>end=2023-08-08</arg>
+<arg>enable=false</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221030 22:06:59.744" level="INFO">&amp;{data} = { name="Running Class" | instructor=Charlie Chaplin | description=Come run with Charlie! | start=2022-11-11 | end=2023-08-08 | enable=false }</msg>
+<status status="PASS" starttime="20221030 22:06:59.744" endtime="20221030 22:06:59.744"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
 <var>${response}</var>
-<arg>Get_all_user_information</arg>
-<arg>user/getUserInfo</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221030 20:00:21.969" level="INFO">GET Request : url=http://127.0.0.1:8000/user/getUserInfo 
- path_url=/user/getUserInfo 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
+<arg>Create_workout_class</arg>
+<arg>workoutClass/createWorkoutClass</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20221030 22:07:00.104" level="INFO">POST Request : url=http://127.0.0.1:8000/workoutClass/createWorkoutClass 
+ path_url=/workoutClass/createWorkoutClass 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '166', 'Content-Type': 'application/json'} 
+ body=b'{"name": "\\"Running Class\\"", "instructor": "Charlie Chaplin", "description": "Come run with Charlie!", "start": "2022-11-11", "end": "2023-08-08", "enable": "false"}' 
  </msg>
-<msg timestamp="20221030 20:00:21.970" level="INFO">GET Response : url=http://127.0.0.1:8000/user/getUserInfo 
- status=200, reason=OK 
- headers={'Date': 'Mon, 31 Oct 2022 00:00:21 GMT', 'Server': 'WSGIServer/0.2 CPython/3.10.8', 'Content-Type': 'application/json', 'Vary': 'Accept, Origin, Cookie', 'Allow': 'OPTIONS, GET', 'X-Frame-Options': 'DENY', 'Content-Length': '117', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'Cross-Origin-Opener-Policy': 'same-origin'} 
- body=[{"id":1,"name":"YasminaMatta","isAdmin":false,"email":"yasminamatta1@gmail.com","balance":0,"password":"nPassword"}] 
+<msg timestamp="20221030 22:07:00.104" level="INFO">POST Response : url=http://127.0.0.1:8000/workoutClass/createWorkoutClass 
+ status=201, reason=Created 
+ headers={'Date': 'Mon, 31 Oct 2022 02:07:00 GMT', 'Server': 'WSGIServer/0.2 CPython/3.10.7', 'Content-Type': 'application/json', 'Vary': 'Accept, Origin, Cookie', 'Allow': 'POST, OPTIONS', 'X-Frame-Options': 'DENY', 'Content-Length': '173', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'Cross-Origin-Opener-Policy': 'same-origin'} 
+ body={"id": 5, "name": "\"Running Class\"", "instructor": "Charlie Chaplin", "description": "Come run with Charlie!", "start": "2022-11-11", "end": "2023-08-08", "enable": false} 
  </msg>
-<msg timestamp="20221030 20:00:21.971" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221030 20:00:21.652" endtime="20221030 20:00:21.971"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>this si the response ${response}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221030 20:00:21.973" level="INFO">this si the response &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221030 20:00:21.972" endtime="20221030 20:00:21.973"/>
-</kw>
-<doc>Get user information</doc>
-<status status="PASS" starttime="20221030 20:00:21.648" endtime="20221030 20:00:21.975"/>
-</test>
-<test id="s1-s1-s1-s1-t2" name="Get user by id" line="16">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>Get_user_by_id</arg>
-<arg>${URL}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221030 20:00:21.979" level="INFO">Creating Session using : alias=Get_user_by_id, url=http://127.0.0.1:8000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221030 20:00:21.979" endtime="20221030 20:00:21.980"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>Get_user_by_id</arg>
-<arg>user/getUserInfoById/1</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221030 20:00:22.265" level="INFO">GET Request : url=http://127.0.0.1:8000/user/getUserInfoById/1 (redirected) 
- path_url=/user/getUserInfoById/1 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221030 20:00:22.266" level="INFO">GET Response : url=http://127.0.0.1:8000/user/getUserInfoById/1/ 
- status=200, reason=OK 
- headers={'Date': 'Mon, 31 Oct 2022 00:00:22 GMT', 'Server': 'WSGIServer/0.2 CPython/3.10.8', 'Content-Type': 'application/json', 'Vary': 'Accept, Origin, Cookie', 'Allow': 'OPTIONS, GET', 'X-Frame-Options': 'DENY', 'Content-Length': '115', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'Cross-Origin-Opener-Policy': 'same-origin'} 
- body={"id":1,"name":"YasminaMatta","isAdmin":false,"email":"yasminamatta1@gmail.com","balance":0,"password":"nPassword"} 
- </msg>
-<msg timestamp="20221030 20:00:22.267" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221030 20:00:21.981" endtime="20221030 20:00:22.267"/>
+<msg timestamp="20221030 22:07:00.104" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20221030 22:06:59.744" endtime="20221030 22:07:00.104"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${response.json()}</arg>
+<arg>Created workout class with fields: ${response.json()}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221030 20:00:22.269" endtime="20221030 20:00:22.271"/>
+<status status="PASS" starttime="20221030 22:07:00.105" endtime="20221030 22:07:00.106"/>
 </kw>
-<doc>Get user information</doc>
-<status status="PASS" starttime="20221030 20:00:21.978" endtime="20221030 20:00:22.272"/>
+<doc>Create Workout Class</doc>
+<status status="PASS" starttime="20221030 22:06:59.743" endtime="20221030 22:07:00.106"/>
 </test>
-<status status="PASS" starttime="20221030 20:00:21.496" endtime="20221030 20:00:22.275"/>
-</suite>
-<status status="PASS" starttime="20221030 20:00:21.491" endtime="20221030 20:00:22.280"/>
-</suite>
-<status status="PASS" starttime="20221030 20:00:21.485" endtime="20221030 20:00:22.285"/>
-</suite>
-<status status="PASS" starttime="20221030 20:00:21.452" endtime="20221030 20:00:22.290"/>
+<status status="PASS" starttime="20221030 22:06:59.712" endtime="20221030 22:07:00.107"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="Backend">Backend</stat>
-<stat pass="2" fail="0" skip="0" id="s1-s1" name="Tests">Backend.Tests</stat>
-<stat pass="2" fail="0" skip="0" id="s1-s1-s1" name="Acceptance">Backend.Tests.Acceptance</stat>
-<stat pass="2" fail="0" skip="0" id="s1-s1-s1-s1" name="CustmerUserAcceptanceTests">Backend.Tests.Acceptance.CustmerUserAcceptanceTests</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="WorkoutClassAcceptanceTests">WorkoutClassAcceptanceTests</stat>
 </suite>
 </statistics>
 <errors>

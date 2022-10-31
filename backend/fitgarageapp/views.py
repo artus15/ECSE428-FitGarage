@@ -69,8 +69,8 @@ def getWorkoutClasses(request):
 
 
 @api_view(['PATCH'])
-def updateUserPassword(request, *args, **kwargs):
-    user_object = CustomUser.objects.get()
+def updateUserPassword(request, pk):
+    user_object = CustomUser.objects.get(id=pk)
     data = request.data
     user_object.password = data.get('password', user_object.password)
 
@@ -122,6 +122,7 @@ def deleteWorkoutClass(request, pk):
 def createWorkoutClass(request, *args, **kwargs):
     workoutClass_object = JSONParser().parse(request)
     serializer = WorkoutClassSerializer(data=workoutClass_object)
+    print(workoutClass_object)
     if serializer.is_valid():
         serializer.save()
         return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)

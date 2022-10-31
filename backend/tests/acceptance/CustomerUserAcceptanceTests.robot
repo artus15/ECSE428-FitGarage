@@ -16,3 +16,10 @@ Get user by id
     Create Session  Get_user_by_id   ${URL}
     ${response}=  get on session  Get_user_by_id  user/getUserInfoById/1
     Log to console  ${response.json()}
+
+Update user password
+    [Documentation]     Update user password
+    Create Session  Update_user_password   ${URL}
+    &{data}=    Create Dictionary     password="New-sPassword!!!!!"
+    ${response}=   patch on session   Update_user_password    user/updatePassword/1/   json=${data}
+    Log to console   User info with updated password: ${response.json()}
