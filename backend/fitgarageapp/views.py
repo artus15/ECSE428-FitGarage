@@ -49,7 +49,7 @@ def getUserInfo(request):
 
 
 @api_view(['PATCH'])
-def updateUserInfo(request, *args, **kwargs):
+def updateUserInfo(request, pk, *args, **kwargs):
     user_object = CustomUser.objects.get(id=pk)
     data = request.data
     user_object.name = data.get("name", user_object.name)
