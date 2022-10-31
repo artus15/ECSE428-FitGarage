@@ -93,13 +93,13 @@ def getUserInfoByEmail(request, email):
     return Response(serializer.data)
 
 @api_view(['PATCH'])
-def updateUserBalance(balance, user):
-    if balance >= 0:
-        user.balance += balance
-        # user_object.save()
-        # serializer = UserSerializer(user_object, data=self.data, partial=True)
-        user.save()
-    return JsonResponse(status=status.HTTP_400_BAD_REQUEST)
+def updateUserBalance(request, *args, **kwargs):
+    data = request.data
+    user_object = CustomUser.objects.filter(name=data.get('name'))
+    user_object.balance = user_object.get_balance() + data.balance
+    user_object.save()
+    serializer = UserSerializer(user_object)
+    return Response(serializer.data)
     
 @api_view(['DELETE'])
 def deleteWorkoutClass(request, pk):
