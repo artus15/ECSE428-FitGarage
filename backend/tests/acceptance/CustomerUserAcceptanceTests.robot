@@ -23,7 +23,7 @@ Get user by id with valid id
 Create new user
     [Documentation]    Create new user
     Create Session    Create_new_user   ${URL}
-    ${data}   Create Dictionary    name=yasminat   email=yas@gmail.com   isAdmin=false   balance=0   password=12345
+    ${data}   Create Dictionary    name=paolo  email=paolo@gmail.com   isAdmin=false   balance=0   password=12345
     ${response}=   post on session   Create_new_user  user/createUser   json=${data}
 
 
@@ -39,6 +39,6 @@ Update user password
 Change user attribute
     [Documentation]    Change user attribute
     Create Session  Change_user_attribute   ${URL}
-    &{data}=    Create Dictionary     name=test
+    &{data}=    Create Dictionary     name=newUserTest100
     ${response}=  patch on session  Change_user_attribute  user/updateUserInfo/1/  json=${data}
     Log to console  ${response.json()}

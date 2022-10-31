@@ -161,3 +161,4 @@ def updateWorkoutClass(request, pk, *args, **kwargs):
     workout_object.enable = data.get("enable", workout_object.enable)
     workout_object.save()
     serializer = WorkoutClassSerializer(workout_object)
+    return Response(serializer.data)
