@@ -130,3 +130,8 @@ dmypy.json
 
 .vscode/
 
+# Robot log files
+log.html
+output.xml
+report.html
+
