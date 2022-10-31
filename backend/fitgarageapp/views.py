@@ -1,5 +1,8 @@
+
 from fitgarageapp.models import WorkoutClass, CustomUser, CustomReview
 from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer, ReviewSerializer
+
+from datetime import date, datetime
 from rest_framework import status
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
@@ -89,6 +92,32 @@ def getUserInfoByEmail(request, email):
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
 
+@api_view(['PATCH'])
+def updateUserBalance(balance, self):
+    user_object = CustomUser.objects.get(id=self.request._request.user.id)
+    if balance >= 0:
+        user_object.balance += balance
+        # user_object.save()
+        serializer = UserSerializer(user_object, data=self.request._request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    return JsonResponse('Balance needs to be superior to 0$', status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['DELETE'])
+def deleteWorkoutClass(request, pk):
+    workoutClass = WorkoutClass.objects.get(id=pk)
+
+    now = date.today()
+    if workoutClass.enable:
+      return Response("Wokrout class is enabled, cannot delete")  
+    elif(workoutClass.start > now and workoutClass.end < now):
+        return Response("Workout class is in progress, cannot delete")
+
+    workoutClass.delete()
+    return Response('Workout Class Deleted')
+
 @api_view(['POST'])
 def createWorkoutClass(request, *args, **kwargs):
     workoutClass_object = JSONParser().parse(request)
@@ -118,6 +147,7 @@ def getWorkoutByInstructor(request, instructor):
     serializer = WorkoutClassSerializer(workout, many=False)
     return Response(serializer.data)
 
+
 @api_view(['POST'])
 def createReview(request, *args, **kwargs):
     review_object = JSONParser().parse(request)
@@ -143,3 +173,16 @@ def getReviewById(request, pk):
     review = CustomReview.objects.get(id=pk)
     serializer = ReviewSerializer(review, many=False)
     return Response(serializer.data)
+
+@api_view(['PATCH'])
+def updateWorkoutClass(request,*args, **kwargs):
+    workout_object = WorkoutClass.objects.get()
+    data = request.data
+    workout_object.name = data.get("name", workout_object.name)
+    workout_object.instructor = data.get("instructor", workout_object.instructor)
+    workout_object.description = data.get("description", workout_object.description)
+    workout_object.start = data.get("start", workout_object.start)
+    workout_object.end = data.get("end", workout_object.end)
+    workout_object.enable = data.get("enable", workout_object.enable)
+    workout_object.save()
+    serializer = WorkoutClassSerializer(workout_object)

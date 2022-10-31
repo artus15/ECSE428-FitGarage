@@ -32,16 +32,19 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('user/getUserInfo', views.getUserInfo),
     path('user/updatePassword', views.updateUserPassword),
+    path('user/updateUserBalance', views.updateUserBalance),    
     path('user/getUserInfoById/<int:pk>/', views.getUserById),
     path('user/getUserInfoByEmail/<str:email>/', views.getUserInfoByEmail),
     path('workoutClass/getAllClasses', views.getWorkoutClasses),
+    path('workoutClass/delete/<int:pk>', views.deleteWorkoutClass),
     path('workoutClass/createWorkoutClass', views.createWorkoutClass),
+    path('workoutClass/updateWorkoutClass', views.updateWorkoutClass),
     path('workoutClass/getWorkoutByName/<str:name>/', views.getWorkoutByName),
     path('workoutClass/getWorkoutById/<int:pk>/', views.getWorkoutById),
     path('workoutClass/getWorkoutByInstructor/<str:instructor>/',
          views.getWorkoutByInstructor),
-
     path('customReview/getReviewById/<int:pk>', views.getReviewById),
     path('customReview/createReview', views.createReview),
     path('customReview/updateReview', views.updateReview)
 ]
+
