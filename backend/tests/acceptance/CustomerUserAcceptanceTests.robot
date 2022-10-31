@@ -33,6 +33,7 @@ Update user password
     &{data}=    Create Dictionary     password=New-sPassword!!!!!
     ${response}=   patch on session   Update_user_password    user/updatePassword/1/   json=${data}
     Log to console   User info with updated password: ${response.json()}
+    Should Be Equal As Strings    ${response.json()}[password]    New-sPassword!!!!!
     
 
 Change user attribute
