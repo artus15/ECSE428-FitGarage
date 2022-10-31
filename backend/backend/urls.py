@@ -30,7 +30,10 @@ router.register(r'classes', views.UserView, 'user')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('user/createUser', views.createUser),
     path('user/getUserInfo', views.getUserInfo),
+    path('user/createUser', views.createUser),
+    path('user/updateUserInfo/<int:pk>/', views.updateUserInfo),
     path('user/updatePassword', views.updateUserPassword),
     path('user/updateUserBalance', views.updateUserBalance),    
     path('user/getUserInfoById/<int:pk>/', views.getUserById),
@@ -38,13 +41,10 @@ urlpatterns = [
     path('workoutClass/getAllClasses', views.getWorkoutClasses),
     path('workoutClass/delete/<int:pk>', views.deleteWorkoutClass),
     path('workoutClass/createWorkoutClass', views.createWorkoutClass),
-    path('workoutClass/updateWorkoutClass', views.updateWorkoutClass),
+    path('workoutClass/updateWorkoutClass/<int:pk>/', views.updateWorkoutClass),
     path('workoutClass/getWorkoutByName/<str:name>/', views.getWorkoutByName),
     path('workoutClass/getWorkoutById/<int:pk>/', views.getWorkoutById),
     path('workoutClass/getWorkoutByInstructor/<str:instructor>/',
          views.getWorkoutByInstructor),
-    path('customReview/getReviewById/<int:pk>', views.getReviewById),
-    path('customReview/createReview', views.createReview),
-    path('customReview/updateReview', views.updateReview)
 ]
 
