@@ -1,6 +1,8 @@
+
+from fitgarageapp.models import WorkoutClass, CustomUser, CustomReview
+from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer, ReviewSerializer
+
 from datetime import date, datetime
-from fitgarageapp.models import WorkoutClass, CustomUser
-from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer
 from rest_framework import status
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
@@ -146,6 +148,31 @@ def getWorkoutByInstructor(request, instructor):
     return Response(serializer.data)
 
 
+@api_view(['POST'])
+def createReview(request, *args, **kwargs):
+    review_object = JSONParser().parse(request)
+    serializer = ReviewSerializer(data=review_object)
+    print(review_object)
+    if serializer.is_valid():
+        serializer.save()
+        return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+    return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PATCH'])
+def updateReview(request, *args, **kwargs):
+    review_object = CustomReview.objects.get()
+    data = request.data
+    review_object.grade = data.get('grade', review_object.grade)
+    review_object.comment = data.get('comment', review_object.comment)
+    review_object.save()
+    serializer = ReviewSerializer(review_object)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getReviewById(request, pk):
+    review = CustomReview.objects.get(id=pk)
+    serializer = ReviewSerializer(review, many=False)
+    return Response(serializer.data)
 
 @api_view(['PATCH'])
 def updateWorkoutClass(request,*args, **kwargs):
@@ -159,4 +186,3 @@ def updateWorkoutClass(request,*args, **kwargs):
     workout_object.enable = data.get("enable", workout_object.enable)
     workout_object.save()
     serializer = WorkoutClassSerializer(workout_object)
-    return Response(serializer.data)
