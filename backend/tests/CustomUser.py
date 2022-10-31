@@ -15,37 +15,27 @@ class CustomUserTest(TestCase):
 
     def test_update_balance_with_positive_value(self):
         """As a user with 0$, I should be able to update my balance to 40$"""
-        user = CustomUser.objects.filter(name="Tom Brady")
+        user = CustomUser.objects.get(name="Tom Brady")
         data = {
-            'name' : 'Tom Brady',
+            'name' : user.name,
             'balance' : 40,
         }
-        request.method = 'PATCH'
-        request.META = data
-        request.META['SERVER_NAME'] = 'localhost'
-        updateUserBalance(request)
-        self.assertEqual(user.get_balance(), 40)
+        self.assertEqual(updateUserBalance(data), 40)
 
     def test_update_balance_with_negative_value(self):
         """Adding negative balance to my account"""
-        user = CustomUser.objects.filter(name="Tom Brady")
+        user = CustomUser.objects.get(name="Tom Brady")
         data = {
+            'name' : user.name,
             "balance" : -40,
         }
-        request.method = 'PATCH'
-        request.META = data
-        request.META['SERVER_NAME'] = 'localhost'
-        updateUserBalance(request)
-        self.assertEqual(user.get_balance(), 0)
+        self.assertEqual(updateUserBalance(data), 0)
 
     def test_update_balance_with_huge_money(self):
         """Adding too much balance to my account"""
-        user = CustomUser.objects.filter(name="Tom Brady")
+        user = CustomUser.objects.get(name="Tom Brady")
         data = {
+            'name' : user.name,
             "balance" : 1000,
         }
-        request.method = 'PATCH'
-        request.META = data
-        request.META['SERVER_NAME'] = 'localhost'
-        updateUserBalance(balance=10000)
-        self.assertEqual(user.get_balance(), 0)
+        self.assertEqual(updateUserBalance(data), 0)

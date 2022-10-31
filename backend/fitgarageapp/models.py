@@ -31,6 +31,10 @@ class CustomUser(models.Model):
 
     def get_balance(self):
         return self.balance
+    
+    def set_balance(self, balance):
+        self.balance = balance
+        self.save(update_fields=["balance"])
 
 class CustomReview(models.Model):
 
