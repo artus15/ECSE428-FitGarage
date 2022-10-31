@@ -5,6 +5,21 @@ Library  RequestsLibrary
 ${URL}  http://127.0.0.1:8000/
 ${ID}   -1
 *** Test Cases ***
+
+Admin adds workout class
+    [Documentation]     Create Workout Class
+    Create Session  Create_workout_class   ${URL}
+    &{data}=    Create Dictionary     name=Running Class   instructor=Charlie Chaplin   description=Come run with Charlie!   start=2022-11-11   end=2023-08-08   enable=false
+    ${response}=   post on session   Create_workout_class    workoutClass/createWorkoutClass   json=${data}
+    Log to console   Created workout class with fields: ${response.json()}
+    Should Be Equal As Strings   ${response.json()}[name]   Running Class
+    Should Be Equal As Strings   ${response.json()}[instructor]   Charlie Chaplin
+    Should Be Equal As Strings   ${response.json()}[description]   Come run with Charlie!
+    Should Be Equal As Strings   ${response.json()}[start]   2022-11-11
+    Should Be Equal As Strings   ${response.json()}[end]   2023-08-08
+    Should Be Equal As Strings   ${response.json()}[enable]   False
+    
+    
 Get all workout classes
     [Documentation]    Get workout classes
     Create Session  Get_all_workout_classes   ${URL}
