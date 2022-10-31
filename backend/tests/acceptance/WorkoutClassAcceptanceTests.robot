@@ -41,7 +41,7 @@ Get workout class by name
 Delete workout class by id
     [Documentation]  Delete workout class by id
     Create Session  Delete_workout_class_by_id   ${URL}
-    ${response}=  delete on session  Delete_workout_class_by_id  workoutClass/delete/10
+    ${response}=  delete on session  Delete_workout_class_by_id  workoutClass/delete/11
     Log to console  ${response.json()}
 
 Change workout class attribute
