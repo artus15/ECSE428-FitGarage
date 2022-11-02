@@ -200,10 +200,10 @@ robot /path/to/robot/file.robot
 ## Roadmap
 
 - [x] Sprint A Backlog and done checklist -- Oct 9, 2022 11:59 PM
-- [ ] Sprint A week 1 -- Oct 16, 2022 11:59 PM
-- [ ] Sprint A week 2 -- Oct 23, 2022 11:59 PM
-- [ ] Sprint A week 3 -- Oct 30, 2022 11:59 PM
-- [ ] Sprint A Automated acceptance test video -- Oct 30, 2022 11:59 PM
+- [x] Sprint A week 1 -- Oct 16, 2022 11:59 PM
+- [x] Sprint A week 2 -- Oct 23, 2022 11:59 PM
+- [x] Sprint A week 3 -- Oct 30, 2022 11:59 PM
+- [x] Sprint A Automated acceptance test video -- Oct 30, 2022 11:59 PM
 - [ ] Sprint B Backlog and done checklist -- Nov 6, 2022 11:59 PM
 - [ ] Sprint B week 1 -- Nov 13, 2022 11:59 PM
 - [ ] Sprint B week 2 -- Nov 20, 2022 11:59 PM
