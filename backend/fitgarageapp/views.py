@@ -111,12 +111,19 @@ def deleteWorkoutClass(request, pk):
 
     now = date.today()
     if workoutClass.enable:
-      return Response("Wokrout class is enabled, cannot delete")  
+      return Response("Workout class is enabled, cannot delete")  
     elif(workoutClass.start > now and workoutClass.end < now):
         return Response("Workout class is in progress, cannot delete")
 
     workoutClass.delete()
     return Response('Workout Class Deleted')
+    
+@api_view(['DELETE'])
+def deleteCustomUser(request, pk):
+    customUser = CustomUser.objects.get(id=pk)
+
+    customUser.delete()
+    return Response('Customer has been Deleted')
 
 @api_view(['POST'])
 def createWorkoutClass(request, *args, **kwargs):
