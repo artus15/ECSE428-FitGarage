@@ -6,3 +6,5 @@ gunicorn
 whitenoise
 dj-database-url
 psycopg2-binary==2.9.4
+robotframework
+robotframework-requests
