@@ -1,6 +1,4 @@
 import React, { useState, useEffect, Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import axios from "axios";
 
 class App extends Component {
@@ -20,8 +18,8 @@ class App extends Component {
 
   refreshList = () => {
     axios
-      .get("/api/classes/")
-      .then((res) => this.setState({ classList: res.data }))
+      .get("http://127.0.0.1:8000/user/getUserInfo")
+      .then((res) => this.setState({ Users: res }))
       .catch((err) => console.log(err));
   };
   
@@ -29,12 +27,19 @@ class App extends Component {
     return (
       <div>
         <p>
-          Existing classes: {this.state.classList}
+          Hello World
         </p>
       </div>
     )
   }
 
-}
+};
+
+
+  // axios
+  //     .get("http://127.0.0.1:8000/user/getUserInfo")
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+
 
 export default App;
