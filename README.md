@@ -40,6 +40,8 @@
     <br />
     <a href="https://github.com/artus15/ECSE428-FitGarage/wiki"><strong>Explore the docs »</strong></a>
     <br />
+    <a href="https://github.com/artus15/ECSE428-FitGarage/wiki/UI-Mock-Up">View UI Mockup</a>
+    <br />
     <a href="https://github.com/artus15/ECSE428-FitGarage/issues">Report Bug</a>
     <br />
     <a href="https://github.com/artus15/ECSE428-FitGarage/issues">Request Feature</a>
