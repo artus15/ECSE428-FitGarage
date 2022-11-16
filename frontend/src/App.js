@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+
 import axios from "axios";
 
 import HomePage from './components/Home/HomePage';
@@ -42,8 +43,8 @@ export default App;
 
   refreshList = () => {
     axios
-      .get("/api/classes/")
-      .then((res) => this.setState({ classList: res.data }))
+      .get("http://127.0.0.1:8000/user/getUserInfo")
+      .then((res) => this.setState({ Users: res }))
       .catch((err) => console.log(err));
   };
-  */
+

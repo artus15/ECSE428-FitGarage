@@ -92,18 +92,12 @@ def getUserInfoByEmail(request, email):
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
 
-@api_view(['PATCH'])
-def updateUserBalance(balance, self):
-    user_object = CustomUser.objects.get(id=self.request._request.user.id)
-    if balance >= 0:
-        user_object.balance += balance
-        # user_object.save()
-        serializer = UserSerializer(user_object, data=self.request._request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-    return JsonResponse('Balance needs to be superior to 0$', status=status.HTTP_400_BAD_REQUEST)
+def updateUserBalance(request, *args, **kwargs):
+    user_object = CustomUser.objects.get(name=request['name'])
+    if request['balance'] >= 0 and request['balance'] < 1000:
+        user_object.balance = user_object.balance + request['balance']
+        user_object.save()
+    return user_object.balance
     
 @api_view(['DELETE'])
 def deleteWorkoutClass(request, pk):
@@ -111,12 +105,19 @@ def deleteWorkoutClass(request, pk):
 
     now = date.today()
     if workoutClass.enable:
-      return Response("Wokrout class is enabled, cannot delete")  
+      return Response("Workout class is enabled, cannot delete")  
     elif(workoutClass.start > now and workoutClass.end < now):
         return Response("Workout class is in progress, cannot delete")
 
     workoutClass.delete()
     return Response('Workout Class Deleted')
+    
+@api_view(['DELETE'])
+def deleteCustomUser(request, pk):
+    customUser = CustomUser.objects.get(id=pk)
+
+    customUser.delete()
+    return Response('Customer has been Deleted')
 
 @api_view(['POST'])
 def createWorkoutClass(request, *args, **kwargs):
@@ -161,3 +162,4 @@ def updateWorkoutClass(request, pk, *args, **kwargs):
     workout_object.enable = data.get("enable", workout_object.enable)
     workout_object.save()
     serializer = WorkoutClassSerializer(workout_object)
+    return Response(serializer.data)
