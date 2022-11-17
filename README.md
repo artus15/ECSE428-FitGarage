@@ -40,6 +40,8 @@
     <br />
     <a href="https://github.com/artus15/ECSE428-FitGarage/wiki"><strong>Explore the docs »</strong></a>
     <br />
+    <a href="https://github.com/artus15/ECSE428-FitGarage/wiki/UI-Mock-Up">View UI Mockup</a>
+    <br />
     <a href="https://github.com/artus15/ECSE428-FitGarage/issues">Report Bug</a>
     <br />
     <a href="https://github.com/artus15/ECSE428-FitGarage/issues">Request Feature</a>
@@ -193,7 +195,7 @@ You need to do the following in 2 different terminals to allow the react app to 
 cd backend
 ```
 ```sh
-python -m robot "your file name.robot"
+robot /path/to/robot/file.robot
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -204,10 +206,10 @@ python -m robot "your file name.robot"
 ## Roadmap
 
 - [x] Sprint A Backlog and done checklist -- Oct 9, 2022 11:59 PM
-- [ ] Sprint A week 1 -- Oct 16, 2022 11:59 PM
-- [ ] Sprint A week 2 -- Oct 23, 2022 11:59 PM
-- [ ] Sprint A week 3 -- Oct 30, 2022 11:59 PM
-- [ ] Sprint A Automated acceptance test video -- Oct 30, 2022 11:59 PM
+- [x] Sprint A week 1 -- Oct 16, 2022 11:59 PM
+- [x] Sprint A week 2 -- Oct 23, 2022 11:59 PM
+- [x] Sprint A week 3 -- Oct 30, 2022 11:59 PM
+- [x] Sprint A Automated acceptance test video -- Oct 30, 2022 11:59 PM
 - [ ] Sprint B Backlog and done checklist -- Nov 6, 2022 11:59 PM
 - [ ] Sprint B week 1 -- Nov 13, 2022 11:59 PM
 - [ ] Sprint B week 2 -- Nov 20, 2022 11:59 PM

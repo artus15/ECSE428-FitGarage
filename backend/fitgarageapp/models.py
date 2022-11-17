@@ -1,4 +1,5 @@
 from datetime import date
+from enum import unique
 from django.db import models
 
 # Create your models here.
@@ -19,14 +20,21 @@ class WorkoutClass(models.Model):
         return self.instructor
 
 class CustomUser(models.Model):
-    name = models.CharField(max_length=168)
+    name = models.CharField(max_length=168, unique= True)
     isAdmin = models.BooleanField()
     email = models.EmailField()
-    balance = models.IntegerField()
+    balance = models.IntegerField(choices=[(i, i) for i in range(1, 1000)], blank=False)
     password = models.CharField(max_length=168)
 
     def _str_(self):
         return self.name
+
+    def get_balance(self):
+        return self.balance
+    
+    def set_balance(self, balance):
+        self.balance = balance
+        self.save(update_fields=["balance"])
 
 class CustomReview(models.Model):
 
