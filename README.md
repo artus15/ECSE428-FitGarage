@@ -167,7 +167,11 @@ You need to do the following in 2 different terminals to allow the react app to 
   ```sh
   cd frontend 
   ```
-  2. run the npm server:
+  2. install the packages and their dependencies:
+  ```sh
+  npm install
+  ```
+  3. run the npm server:
   ```sh
   npm start
   ```
