@@ -1,6 +1,6 @@
 
-from fitgarageapp.models import WorkoutClass, CustomUser, CustomReview
-from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer, ReviewSerializer
+from fitgarageapp.models import WorkoutClass, CustomUser, CustomReview, Booking
+from fitgarageapp.serializers import WorkoutClassSerializer, UserSerializer, ReviewSerializer, BookingSerializer
 
 from datetime import date, datetime
 from rest_framework import status
@@ -169,3 +169,41 @@ def updateWorkoutClass(request, pk, *args, **kwargs):
     workout_object.save()
     serializer = WorkoutClassSerializer(workout_object)
     return Response(serializer.data)
+
+
+
+# Booking Features
+
+@api_view(['GET'])
+def getBookingsByUser(request, userId: int):
+    bookings = Booking.objects.get(user=userId)
+    serializer = BookingSerializer(bookings, many=True)
+    return Response(serializer.data) 
+
+@api_view(['GET'])
+def getBookingsByWorkoutClass(request, workoutClassId: int):
+    bookings = Booking.objects.get(workoutClass=workoutClassId)
+    serializer = BookingSerializer(bookings, many=True)
+    return Response(serializer.data) 
+
+
+@api_view(['POST'])
+def createBooking(request):
+
+    booking_object = JSONParser().parse(request)
+    serializer = BookingSerializer(data=booking_object)
+    #print(booking_object)
+    if serializer.is_valid():
+        serializer.save()
+        return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+    return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['DELETE'])
+def deleteBooking(request, bookingId):
+
+    booking = Booking.objects.get(id=bookingId)
+
+    booking.delete()
+    return Response('Booking Deleted')
