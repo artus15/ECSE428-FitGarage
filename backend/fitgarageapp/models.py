@@ -65,4 +65,13 @@ class CustomReview(models.Model):
     #     return self.workoutClassId
 
 
+class Booking(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    workoutClass = models.ForeignKey(WorkoutClass, on_delete=models.CASCADE)
+    bookingDate = models.DateField()
+
+    def _str_(self):
+        return (f'Booking for user {self.user} for the class {self.workoutClass}')
+
+    
 

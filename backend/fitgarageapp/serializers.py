@@ -1,7 +1,7 @@
 from functools import total_ordering
 from rest_framework import serializers
 # example serializer to serialize class to json
-from fitgarageapp.models import WorkoutClass, CustomUser, CustomReview
+from fitgarageapp.models import WorkoutClass, CustomUser, CustomReview, Booking
 
 class WorkoutClassSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,3 +19,11 @@ class ReviewSerializer(serializers.ModelSerializer):
         # fields = ('id', 'grade', 'comment')
         # fields = ('id', 'userid', 'workoutclassid', 'grade', 'comment')
         fields = ('id', 'username', 'classname', 'grade', 'comment')
+
+
+
+class BookingSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Booking
+        fields = ('user_id', 'workoutClass_id', 'booking_date')
