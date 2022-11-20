@@ -34,6 +34,7 @@ urlpatterns = [
     path('user/getUserInfo', views.getUserInfo),
     path('user/updatePassword/<int:pk>/', views.updateUserPassword),
     path('user/createUser', views.createUser),
+    path('user/deleteCustomUser/<int:pk>', views.deleteCustomUser),
     path('user/updateUserInfo/<int:pk>/', views.updateUserInfo),
     path('user/updatePassword', views.updateUserPassword),
     path('user/updateUserBalance', views.updateUserBalance),    
