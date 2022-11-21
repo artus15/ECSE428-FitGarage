@@ -1,0 +1,18 @@
+.input {
+	margin: 0.5rem;
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	border: 2px solid orange;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	background: black;
+	color: white;
+}
+
+.input::placeholder {
+	color: white;
+}
+.input:focus {
+	outline: none;
+}
