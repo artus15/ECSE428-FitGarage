@@ -55,7 +55,7 @@ export const Login = () => {
 					/>
 					<input
 						className={styles.input}
-						type="text"
+						type="password"
 						placeholder="Password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
