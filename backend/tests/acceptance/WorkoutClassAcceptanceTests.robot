@@ -41,7 +41,7 @@ Get workout class by name
 Delete workout class by id
     [Documentation]  Delete workout class by id
     Create Session  Delete_workout_class_by_id   ${URL}
-    ${response}=  delete on session  Delete_workout_class_by_id  workoutClass/delete/11
+    ${response}=  delete on session  Delete_workout_class_by_id  workoutClass/delete/12
     Log to console  ${response.json()}
 
 Change workout class attribute
@@ -49,4 +49,11 @@ Change workout class attribute
     Create session  Change_workout_class_attribute  ${URL}
     &{data}=    Create Dictionary     name=secretWorkout
     ${response}=  patch on session  Change_workout_class_attribute  workoutClass/updateWorkoutClass/4/  json=${data}
+    Log to console  ${response.json()}
+
+Update workout enable flag
+    [Documentation]  Update Workout Enable Flag
+    Create session  Update_workout_enable_flag  ${URL}
+    &{data}=    Create Dictionary     name=true
+    ${response}=  patch on session  Update_workout_enable_flag  workoutClass/updateWorkoutEnableFlag/3/  json=${data}
     Log to console  ${response.json()}
