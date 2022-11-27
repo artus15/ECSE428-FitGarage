@@ -50,3 +50,9 @@ Change workout class attribute
     &{data}=    Create Dictionary     name=secretWorkout
     ${response}=  patch on session  Change_workout_class_attribute  workoutClass/updateWorkoutClass/4/  json=${data}
     Log to console  ${response.json()}
+
+Enroll in workout class
+    [Documentation]     Enroll in Workout Class
+    Create Session  Enroll_workout_class   ${URL}
+    ${response}=   post on session   Enroll_workout_class    workoutClass/createBooking
+    Log to console  ${response.json()}
