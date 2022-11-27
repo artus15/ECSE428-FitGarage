@@ -72,6 +72,9 @@ class Booking(models.Model):
 
     def _str_(self):
         return (f'Booking for user {self.user} for the class {self.workoutClass}')
+    
+    def get_user(self):
+        return self.user
 
     
 
