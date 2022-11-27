@@ -51,5 +51,7 @@ urlpatterns = [
     path('workoutClass/getWorkoutClassBookings/<int:workoutClassId>/', views.getBookingsByWorkoutClass),
     path('booking/createBooking', views.createBooking),
     path('booking/deleteBooking/<int:bookingId>/', views.deleteBooking),
+    path('workoutClass/updateWorkoutEnableFlag/<int:pk>/',
+         views.updateWorkoutEnableFlag)
 ]
 

@@ -201,3 +201,13 @@ def deleteBooking(request, bookingId):
 
     booking.delete()
     return Response('Booking Deleted')
+
+
+@api_view(['PATCH'])
+def updateWorkoutEnableFlag(request, pk):
+    workout_object = WorkoutClass.objects.get(id=pk)
+    data = request.data
+    workout_object.enable = data.get("enable", workout_object.enable)
+    workout_object.save()
+    serializer = WorkoutClassSerializer(workout_object)
+    return Response(serializer.data)
