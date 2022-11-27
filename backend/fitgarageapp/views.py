@@ -105,7 +105,7 @@ def deleteWorkoutClass(request, pk):
 
     now = date.today()
     if workoutClass.enable:
-      return Response("Workout class is enabled, cannot delete")  
+      return Response("Workout class already began, we cannot delete")  
     elif(workoutClass.start > now and workoutClass.end < now):
         return Response("Workout class is in progress, cannot delete")
 
@@ -195,9 +195,11 @@ def createBooking(request):
 
 
 @api_view(['DELETE'])
-def deleteBooking(request, bookingId):
-
+def deleteBooking(request, pk, bookingId):
+    user_object = CustomUser.objects.get(id=pk)
+    current_user = request.data.get("name", user_object.name)
     booking = Booking.objects.get(id=bookingId)
-
-    booking.delete()
-    return Response('Booking Deleted')
+    if current_user == booking.user :
+        booking.delete()
+        return Response('Booking Deleted')
+    return Response('Failed to delete booking')
