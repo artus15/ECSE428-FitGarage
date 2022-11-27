@@ -1,10 +1,10 @@
-.bookingpage {
+.informationpage {
     width: 100%;
     height: 100vh;
     background-color: black;
 } 
 
-.bookingpage .course{
+.informationpage .course{
     background-color: orange;
     padding: 1rem; 
     width: 50%;
@@ -16,32 +16,14 @@
     display:flex;
 }
 
-.bookingpage .header{
+.informationpage .header{
     width: 50%;
     margin:auto;
     text-align: center;
     color: orange;
 }
-.bookingpage h4{
-    color: antiquewhite;
-}
 
-.bookingpage button{
-    text-align: center;
-    font-size: medium;
-    color:antiquewhite;
-    background-color: black;
-    border-style: hidden;
-    padding: 13px;
-    margin-left: 380px;
-}
-
-.bookingpage button:hover {
-    background-color: #4CAF50; /* Green */
-    color: white;
-  }
-
-.bookingpage .backbutton{
+.informationpage button{
     text-align: center;
     font-size: medium;
     color:antiquewhite;
@@ -50,7 +32,8 @@
     padding: 13px;
     margin:auto;
 }
-.bookingpage .backbutton:hover {
+
+.informationpage button:hover {
     background-color: #4CAF50; /* Green */
     color: white;
   }
