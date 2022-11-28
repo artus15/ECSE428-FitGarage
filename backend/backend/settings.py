@@ -104,19 +104,19 @@ DATABASES = {
 }
 """
 
-# to Heroku Postgres db
+# to supabase
 
 if 'test' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'd7vt5mp7caqivu',
-            'USER': 'rhhexiomymwwqn',
-            'PASSWORD': '178ff3be565b2670c7f65f3775ade6951c57aa3f0d0d45825232aea5bb2a2c34',
-            'HOST': 'ec2-44-205-63-142.compute-1.amazonaws.com',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'PASSWORD': 'Kw57NhJrvUjIXpRm',
+            'HOST': 'db.uvmyblijopseuxhgpgol.supabase.co',
             'PORT': '5432',
             'TEST': {
-                'NAME': 'd7vt5mp7caqivu'
+                'NAME': 'postgres'
             }
         }
     } 
@@ -126,13 +126,13 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'ddv6rbq4f4d5db',
-            'USER': 'twtjrcnkjxygcy',
-            'PASSWORD': '0e0b1e6cb0a42c883947f8387c16f8fb98f50f584b58be504e3b02e2efeaf218',
-            'HOST': 'ec2-44-209-24-62.compute-1.amazonaws.com',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'PASSWORD': 'MdW8v9xMUL2TtoZ3',
+            'HOST': 'db.ifnjhetyiyjndsbtxpcu.supabase.co',
             'PORT': '5432',
             'TEST': {
-                'NAME': 'ddv6rbq4f4d5db'
+                'NAME': 'postgres'
             }
         }
     }
