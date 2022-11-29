@@ -153,6 +153,7 @@ def getWorkoutByInstructor(request, instructor):
 @api_view(['PATCH'])
 def updateWorkoutClass(request, pk, *args, **kwargs):
     workout_object = WorkoutClass.objects.get(id=pk)
+    serializer = WorkoutClassSerializer(workout_object)
     data = request.data
     workout_object.name = data.get("name", workout_object.name)
     workout_object.instructor = data.get("instructor", workout_object.instructor)
@@ -161,9 +162,7 @@ def updateWorkoutClass(request, pk, *args, **kwargs):
     workout_object.end = data.get("end", workout_object.end)
     workout_object.enable = data.get("enable", workout_object.enable)
     workout_object.save()
-    serializer = WorkoutClassSerializer(workout_object)
     return Response(serializer.data)
-
 
 
 # Booking Features
@@ -180,7 +179,6 @@ def getBookingsByWorkoutClass(request, workoutClassId: int):
     serializer = BookingSerializer(bookings, many=True)
     return Response(serializer.data) 
 
-
 @api_view(['POST'])
 def createBooking(request):
 
@@ -192,8 +190,6 @@ def createBooking(request):
         return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-
 @api_view(['DELETE'])
 def deleteBooking(request, pk, bookingId):
     user_object = CustomUser.objects.get(id=pk)
@@ -204,7 +200,6 @@ def deleteBooking(request, pk, bookingId):
         return Response('Booking Deleted')
     return Response('Failed to delete booking')
     
-
 @api_view(['PATCH'])
 def updateWorkoutEnableFlag(request, pk):
     workout_object = WorkoutClass.objects.get(id=pk)

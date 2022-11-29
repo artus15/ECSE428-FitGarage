@@ -11,6 +11,9 @@ import { Routes, Route } from "react-router-dom";
 import { Signup } from "./components/Signup/Signup.js";
 import { Login } from "./components/Login/Login.js";
 
+import {BookingPage} from "./components/Booking/BookingPage.js";
+import {InformationPage} from "./components/Information/InformationPage.js";
+
 //import {Route, Switch} from 'react-router';
 
 function App() {
@@ -20,6 +23,8 @@ function App() {
 				<Route path="/" element={<HomePage />}></Route>
 				<Route path="/signup" element={<Signup />}></Route>
 				<Route path="/login" element={<Login />}></Route>
+        <Route path="/booking" element={<BookingPage />}></Route>
+        <Route path="/information" element={<InformationPage />}></Route>
 			</Routes>
 		</div>
 	);

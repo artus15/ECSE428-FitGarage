@@ -1,0 +1,39 @@
+.informationpage {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+} 
+
+.informationpage .course{
+    background-color: orange;
+    padding: 1rem; 
+    width: 50%;
+    margin:auto;
+    padding:20px;
+    border-color: black;
+    border-width: 20px;
+    border-style:solid;
+    display:flex;
+}
+
+.informationpage .header{
+    width: 50%;
+    margin:auto;
+    text-align: center;
+    color: orange;
+}
+
+.informationpage button{
+    text-align: center;
+    font-size: medium;
+    color:antiquewhite;
+    background-color: orange;
+    border-style: hidden;
+    padding: 13px;
+    margin:auto;
+}
+
+.informationpage button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
