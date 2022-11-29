@@ -12,10 +12,17 @@ const Navbar = () => {
 		navigate("/signup");
 	};
 
+	const navigateInformation = () => {
+		// 👇️ navigate to /
+		navigate("/information");
+	};	
+
+
 	return (
 		<div className="navbar">
 			<div className="container">
 				<ul className="nav-menu">
+					<button onClick={navigateInformation}>INFORMATION</button>
 					<button onClick={navigateSignUp}> SIGN UP/LOGIN</button>
 				</ul>
 			</div>
