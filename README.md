@@ -96,6 +96,7 @@ We will reference a database and the user will be able to directly enter informa
 * [![Django][DjangoB]][Django]
 * [![React][React.js]][React-url]
 * [![Heroku][HerokuB]][Heroku]
+* [![Supabase][SupabaseB]][Heroku]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -282,3 +283,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [React-url]: https://reactjs.org/
 [HerokuB]: https://img.shields.io/badge/Heroku-8A2BE2?style=for-the-badge&logo=heroku&logoColor=61DAFB
 [Heroku]: https://www.heroku.com/
+[SupabaseB]: https://img.shields.io/badge/Supabase-8A2BE2?style=for-the-badge&logo=supabase&logoColor=61DAFB
+[Supabase]: https://supabase.com/
