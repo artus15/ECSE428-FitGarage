@@ -20,14 +20,12 @@ Admin adds booking class
 Get booking by id
     [Documentation]    Get booking by User
     Create Session  Get_booking_by_id   ${URL}
-    ${response}=  get on session  Get_all_booking_classes  booking/getBookingsById/1/
-    Status Should Be    OK  ${response}
+    ${response}=  get on session  Get_booking_by_id  booking/getBookingById/1/
     Log To Console    ${response.json()}
-    Should Be Equal As Strings    ${response.json()}[user]    1
-    Should Be Equal As Strings    ${response.json()}[workoutClass]    7
+
 
 Delete booking class by id
     [Documentation]  Delete booking class by id
     Create Session  Delete_booking_class_by_id   ${URL}
-    ${response}=  delete on session  Delete_booking_class_by_id  booking/deleteBooking/7/
+    ${response}=  delete on session  Delete_booking_class_by_id  booking/deleteBooking/9/
     Log to console  ${response.json()}
