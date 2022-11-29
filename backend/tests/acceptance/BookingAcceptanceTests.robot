@@ -27,5 +27,5 @@ Get booking by id
 Delete booking class by id
     [Documentation]  Delete booking class by id
     Create Session  Delete_booking_class_by_id   ${URL}
-    ${response}=  delete on session  Delete_booking_class_by_id  booking/deleteBooking/9/
+    ${response}=  delete on session  Delete_booking_class_by_id  booking/deleteBooking/12/
     Log to console  ${response.json()}

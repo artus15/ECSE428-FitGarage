@@ -41,7 +41,7 @@ Get workout class by name
 Delete workout class by id
     [Documentation]  Delete workout class by id
     Create Session  Delete_workout_class_by_id   ${URL}
-    ${response}=  delete on session  Delete_workout_class_by_id  workoutClass/delete/12
+    ${response}=  delete on session  Delete_workout_class_by_id  workoutClass/delete/15
     Log to console  ${response.json()}
 
 Change workout class attribute
@@ -51,10 +51,6 @@ Change workout class attribute
     ${response}=  patch on session  Change_workout_class_attribute  workoutClass/updateWorkoutClass/4/  json=${data}
     Log to console  ${response.json()}
 
-Enroll in workout class
-    [Documentation]     Enroll in Workout Class
-    Create Session  Enroll_workout_class   ${URL}
-    ${response}=   post on session   Enroll_workout_class    workoutClass/createBooking
 
 Update workout enable flag
     [Documentation]  Update Workout Enable Flag

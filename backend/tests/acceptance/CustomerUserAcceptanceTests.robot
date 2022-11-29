@@ -23,7 +23,7 @@ Get user by id with valid id
 Create new user
     [Documentation]    Create new user
     Create Session    Create_new_user   ${URL}
-    ${data}   Create Dictionary    name=aNewTestUser  email=aNewTestUser@gmail.com   isAdmin=false   balance=0   password=12345
+    ${data}   Create Dictionary    name=uniqUser  email=uniquEmail@gmail.com   isAdmin=false   balance=0   password=12345
     ${response}=   post on session   Create_new_user  user/createUser   json=${data}
 
 
