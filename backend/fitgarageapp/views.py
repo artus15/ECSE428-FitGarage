@@ -184,7 +184,6 @@ def createBooking(request):
 
     booking_object = JSONParser().parse(request)
     serializer = BookingSerializer(data=booking_object)
-    #print(booking_object)
     if serializer.is_valid():
         serializer.save()
         return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
