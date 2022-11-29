@@ -38,6 +38,7 @@ urlpatterns = [
     path('user/updateUserBalance', views.updateUserBalance),    
     path('user/getUserInfoById/<int:pk>/', views.getUserById),
     path('user/getUserInfoByEmail/<str:email>/', views.getUserInfoByEmail),
+    path('user/login/<str:email>/<str:password>', views.logIn),
     path('workoutClass/getAllClasses', views.getWorkoutClasses),
     path('workoutClass/delete/<int:pk>', views.deleteWorkoutClass),
     path('workoutClass/createWorkoutClass', views.createWorkoutClass),
@@ -50,7 +51,11 @@ urlpatterns = [
     path('workoutClass/getWorkoutClassBookings/<int:workoutClassId>/', views.getBookingsByWorkoutClass),
     path('booking/createBooking', views.createBooking),
     path('booking/deleteBooking/<int:bookingId>/', views.deleteBooking),
+    path('booking/getBookingByUser/<int:userId>/', views.getBookingsByUser),
+    path('booking/getBookingByWorkoutClass/<int:workoutClassId>/', views.getBookingsByWorkoutClass),
+    path('booking/createBooking', views.createBooking),
     path('workoutClass/updateWorkoutEnableFlag/<int:pk>/',
          views.updateWorkoutEnableFlag)
+    
 ]
 

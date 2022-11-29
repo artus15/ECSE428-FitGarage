@@ -207,3 +207,11 @@ def updateWorkoutEnableFlag(request, pk):
     workout_object.save()
     serializer = WorkoutClassSerializer(workout_object)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def logIn(request, email, password):
+    user = CustomUser.objects.get(email=email)
+    serializer = UserSerializer(user, many=False)
+    if user.password == password:
+        return Response(serializer.data)
+    return Response("Invalid Credentials")
