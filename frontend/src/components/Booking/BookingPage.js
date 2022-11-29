@@ -9,9 +9,9 @@ export const BookingPage = () => {
     const navigate = useNavigate();
     //Must be changed to go to a dashboard page or something like that.
 
-    const navigateHomepage = () => {
+    const navigateDashboard = () => {
 		// 👇️ navigate to /
-		navigate("/");
+		navigate("/dashboard");
 	};	
 
     //dummy variables
@@ -31,7 +31,7 @@ export const BookingPage = () => {
 			<div className="bookingpage">
 				<div className="content">
                     <div className="header">
-                    <h1>AVAILABLE COURSES</h1>
+                    <h1>AVAILABLE CLASSES</h1>
 					<h4>Click the JOIN button to book the class!</h4>
                     </div>
                     <div className="course">
@@ -65,7 +65,7 @@ export const BookingPage = () => {
                         
                     </div>
 
-                    <button className="backbutton" onClick={navigateHomepage}> BACK</button>
+                    <button className="backbutton" onClick={navigateDashboard}> BACK</button>
 
 				</div>
 			</div>
