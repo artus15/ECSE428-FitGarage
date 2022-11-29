@@ -51,6 +51,11 @@ Change workout class attribute
     ${response}=  patch on session  Change_workout_class_attribute  workoutClass/updateWorkoutClass/4/  json=${data}
     Log to console  ${response.json()}
 
+Enroll in workout class
+    [Documentation]     Enroll in Workout Class
+    Create Session  Enroll_workout_class   ${URL}
+    ${response}=   post on session   Enroll_workout_class    workoutClass/createBooking
+
 Update workout enable flag
     [Documentation]  Update Workout Enable Flag
     Create session  Update_workout_enable_flag  ${URL}
