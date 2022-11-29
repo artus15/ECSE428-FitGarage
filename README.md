@@ -211,11 +211,11 @@ robot /path/to/robot/file.robot
 - [x] Sprint A week 2 -- Oct 23, 2022 11:59 PM
 - [x] Sprint A week 3 -- Oct 30, 2022 11:59 PM
 - [x] Sprint A Automated acceptance test video -- Oct 30, 2022 11:59 PM
-- [ ] Sprint B Backlog and done checklist -- Nov 6, 2022 11:59 PM
-- [ ] Sprint B week 1 -- Nov 13, 2022 11:59 PM
-- [ ] Sprint B week 2 -- Nov 20, 2022 11:59 PM
-- [ ] Sprint B week 3 -- Nov 27, 2022 11:59 PM
-- [ ] Sprint B Automated acceptance test video -- Nov 27, 2022 11:59 PM
+- [x] Sprint B Backlog and done checklist -- Nov 6, 2022 11:59 PM
+- [x] Sprint B week 1 -- Nov 13, 2022 11:59 PM
+- [x] Sprint B week 2 -- Nov 20, 2022 11:59 PM
+- [x] Sprint B week 3 -- Nov 27, 2022 11:59 PM
+- [x] Sprint B Automated acceptance test video -- Nov 27, 2022 11:59 PM
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
@@ -283,5 +283,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [React-url]: https://reactjs.org/
 [HerokuB]: https://img.shields.io/badge/Heroku-8A2BE2?style=for-the-badge&logo=heroku&logoColor=61DAFB
 [Heroku]: https://www.heroku.com/
-[SupabaseB]: https://img.shields.io/badge/Supabase-8A2BE2?style=for-the-badge&logo=supabase&logoColor=61DAFB
+[SupabaseB]: https://img.shields.io/badge/Supabase-98FB98?style=for-the-badge&logo=supabase&logoColor=grey
 [Supabase]: https://supabase.com/
