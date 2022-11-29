@@ -42,3 +42,10 @@ Change user attribute
     &{data}=    Create Dictionary     name=newUserTest101
     ${response}=  patch on session  Change_user_attribute  user/updateUserInfo/1/  json=${data}
     Log to console  ${response.json()}
+
+Log In 
+    [Documentation]    Log In
+    Create Session  Log_In   ${URL}
+    &{data}=    Create Dictionary  name=yasmina1@gmail.com  password=12345
+    ${response}=  get on session  Log_In  user/login/${data['name']}/${data['password']}  json=${data}
+    Log to console  ${response.json()}
