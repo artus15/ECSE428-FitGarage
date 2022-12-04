@@ -236,9 +236,8 @@ When implementing a feature, you need to follow this done checklist:
 - [ ]	All of a story’s code in integrated into the main source code (i.e. merged into the
 master branch)
 - [ ]	Code builds successfully.
-- [ ]	All users are able to sign up and sign in.
 - [ ]	All of a story’s code has been peer reviewed and accepted by at least two reviewers.
-- [ ]	The unit test coverage has to be above 90%.
+- [ ]	The unit test coverage has to be above 80%.
 - [ ]	All known bugs are reviewed and documented.
 - [ ]	All bugs that prevent acceptance tests to pass need to be corrected prior to being merged into the master branch.
 - [ ]	All previous automated story tests still succeed.
